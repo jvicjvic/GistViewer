@@ -11,17 +11,17 @@ import UIKit
 
 class ApplicationCoordinator: CoreCoordinator {
     let window: UIWindow
-    var childCoordinators = [CoreCoordinator]()
+    private var mainTabRouter: MainTabRouter?
 
     init(window: UIWindow) {
         self.window = window
     }
 
     @MainActor func start() {
-        let mainCoordinator = MainTabCoordinator()
-        mainCoordinator.start()
-        window.rootViewController = mainCoordinator.rootViewController
-        childCoordinators = [mainCoordinator]
+        let mainTabRouter = MainTabRouter()
+        mainTabRouter.start()
+        window.rootViewController = mainTabRouter.rootViewController
+        self.mainTabRouter = mainTabRouter
         window.backgroundColor = .white
     }
 }

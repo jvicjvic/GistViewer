@@ -17,15 +17,14 @@ final class GistsListVM {
     @Published private(set) var isLoading = false
     @Published var errorMessage: String?
 
-    @Published var selectedItem: Gist?
-
     let title = "Gists"
 
     private var currentPage = 1
-
     private let repository: GistRepository
+    private weak var router: GistListRouter?
 
-    init(repository: GistRepository = ProductionGistRepository()) {
+    init(router: GistListRouter, repository: GistRepository = ProductionGistRepository()) {
+        self.router = router
         self.repository = repository
     }
 
@@ -69,6 +68,7 @@ final class GistsListVM {
     }
 
     func didSelect(index: Int) {
-        selectedItem = gists[index]
+        let gist = gists[index]
+        router?.navigateTo(.gistDetail(gist))
     }
 }

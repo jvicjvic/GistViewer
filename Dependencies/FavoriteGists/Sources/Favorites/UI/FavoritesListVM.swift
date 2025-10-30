@@ -15,16 +15,19 @@ open class FavoritesListVM<T: FavoriteItem> {
     @Published private(set) var isLoading = false
     @Published var errorMessage = ""
 
-    @Published public var selectedItem: T?
-
     let title = "Favoritos"
 
     private var currentPage = 1
-
     private let repository: FavoritesRepository
+    private var onItemSelected: ((T) -> Void)?
 
-    public init(repository: FavoritesRepository = ProductionFavoritesRepository()) {
+    public init(repository: FavoritesRepository = ProductionFavoritesRepository(), onItemSelected: ((T) -> Void)? = nil) {
         self.repository = repository
+        self.onItemSelected = onItemSelected
+    }
+    
+    public func setItemSelectedHandler(_ handler: @escaping (T) -> Void) {
+        self.onItemSelected = handler
     }
 
     func connect() {
@@ -46,6 +49,7 @@ open class FavoritesListVM<T: FavoriteItem> {
     }
 
     func didSelect(index: Int) {
-        selectedItem = items[index]
+        let item = items[index]
+        onItemSelected?(item)
     }
 }
