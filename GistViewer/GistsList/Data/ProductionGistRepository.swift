@@ -10,18 +10,18 @@ import NetworkService
 import UIKit
 
 final class ProductionGistRepository: GistRepository {
-    private let networkService: GistsNetwork
+    private let gistsService: GistsService
 
-    init(networkService: GistsNetwork = GistsNetworkService()) {
-        self.networkService = networkService
+    init(gistsService: GistsService = GistsService()) {
+        self.gistsService = gistsService
     }
 
     func fetchPublicGists(page: Int) async throws -> [Gist] {
-        try await networkService.fetchPublicGists(page: page, itemsPerPage: 30)
+        try await gistsService.fetchPublicGists(page: page, itemsPerPage: 30)
     }
 
     func fetchGistData(_ gist: Gist) async throws -> Gist {
-        try await networkService.fetchGistDetails(id: gist.id)
+        try await gistsService.fetchGistDetails(id: gist.id)
     }
 
     func fetchAvatarImage(_ gist: Gist) async throws -> UIImage? {
