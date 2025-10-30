@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8A9C9EA52EB3D7B700131B11 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9C9EA42EB3D7B700131B11 /* SnapKit */; };
+		8A9C9EAB2EB3E85F00131B11 /* CoreCommons in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9C9EAA2EB3E85F00131B11 /* CoreCommons */; };
+		8A9C9EC12EB3F52500131B11 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9C9EC02EB3F52500131B11 /* Core */; };
+		8A9C9F142EB3F74A00131B11 /* FavoriteGists in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9C9F132EB3F74A00131B11 /* FavoriteGists */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		8A9C9E8B2EB3D76700131B11 /* GistViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GistViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +43,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A9C9EAB2EB3E85F00131B11 /* CoreCommons in Frameworks */,
+				8A9C9EA52EB3D7B700131B11 /* SnapKit in Frameworks */,
+				8A9C9EC12EB3F52500131B11 /* Core in Frameworks */,
+				8A9C9F142EB3F74A00131B11 /* FavoriteGists in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +89,10 @@
 			);
 			name = GistViewer;
 			packageProductDependencies = (
+				8A9C9EA42EB3D7B700131B11 /* SnapKit */,
+				8A9C9EAA2EB3E85F00131B11 /* CoreCommons */,
+				8A9C9EC02EB3F52500131B11 /* Core */,
+				8A9C9F132EB3F74A00131B11 /* FavoriteGists */,
 			);
 			productName = GistViewer;
 			productReference = 8A9C9E8B2EB3D76700131B11 /* GistViewer.app */;
@@ -107,6 +122,12 @@
 			);
 			mainGroup = 8A9C9E822EB3D76700131B11;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8A9C9EA32EB3D7B700131B11 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				8A9C9EA92EB3E85F00131B11 /* XCLocalSwiftPackageReference "Dependencies/CoreCommons" */,
+				8A9C9EBF2EB3F52500131B11 /* XCLocalSwiftPackageReference "Dependencies/Core" */,
+				8A9C9F122EB3F74A00131B11 /* XCLocalSwiftPackageReference "Dependencies/FavoriteGists" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8A9C9E8C2EB3D76700131B11 /* Products */;
 			projectDirPath = "";
@@ -335,6 +356,52 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		8A9C9EA92EB3E85F00131B11 /* XCLocalSwiftPackageReference "Dependencies/CoreCommons" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Dependencies/CoreCommons;
+		};
+		8A9C9EBF2EB3F52500131B11 /* XCLocalSwiftPackageReference "Dependencies/Core" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Dependencies/Core;
+		};
+		8A9C9F122EB3F74A00131B11 /* XCLocalSwiftPackageReference "Dependencies/FavoriteGists" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Dependencies/FavoriteGists;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8A9C9EA32EB3D7B700131B11 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8A9C9EA42EB3D7B700131B11 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A9C9EA32EB3D7B700131B11 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		8A9C9EAA2EB3E85F00131B11 /* CoreCommons */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreCommons;
+		};
+		8A9C9EC02EB3F52500131B11 /* Core */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Core;
+		};
+		8A9C9F132EB3F74A00131B11 /* FavoriteGists */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FavoriteGists;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8A9C9E832EB3D76700131B11 /* Project object */;
 }
