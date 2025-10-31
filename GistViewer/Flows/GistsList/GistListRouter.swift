@@ -18,6 +18,7 @@ enum GistListDestination {
 class GistListRouter: CoreRouter {
     weak var navigationController: UINavigationController?
     private weak var viewModel: GistsListVM?
+    private var detailRouter: GistDetailRouter?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -41,9 +42,10 @@ class GistListRouter: CoreRouter {
 
     @MainActor
     private func presentDetail(gist: Gist) {
-        let detailVM = GistDetailVM(gist: gist)
-        let detailVC = GistDetailVC(viewModel: detailVM)
-        push(viewController: detailVC)
+        guard let navigationController = navigationController else { return }
+        let router = GistDetailRouter(navigationController: navigationController, gist: gist)
+        detailRouter = router
+        router.startFlow()
     }
 }
 

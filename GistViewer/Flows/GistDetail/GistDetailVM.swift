@@ -24,6 +24,7 @@ final class GistDetailVM: CoreViewModel {
 
     private let favoritesRepository: FavoritesRepository
     private let repository: GistRepository
+    private weak var router: GistDetailRouter?
     private var fetchTask: Task<Void, Never>?
 
     var title: String {
@@ -34,8 +35,9 @@ final class GistDetailVM: CoreViewModel {
         return "\(gist.owner.login) / \(gist.filename)"
     }
 
-    init(gist: Gist, repository: GistRepository = ProductionGistRepository(),
+    init(router: GistDetailRouter, gist: Gist, repository: GistRepository = ProductionGistRepository(),
          favoritesRepository: FavoritesRepository = ProductionFavoritesRepository()) {
+        self.router = router
         self.gist = gist
         self.repository = repository
         self.favoritesRepository = favoritesRepository

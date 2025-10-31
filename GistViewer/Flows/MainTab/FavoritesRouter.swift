@@ -19,6 +19,7 @@ enum FavoritesDestination {
 class FavoritesRouter: CoreRouter {
     weak var navigationController: UINavigationController?
     private weak var viewModel: FavoritesListVM<Gist>?
+    private var detailRouter: GistDetailRouter?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -43,9 +44,10 @@ class FavoritesRouter: CoreRouter {
     }
     
     @MainActor private func presentDetail(gist: Gist) {
-        let detailVM = GistDetailVM(gist: gist)
-        let detailVC = GistDetailVC(viewModel: detailVM)
-        push(viewController: detailVC)
+        guard let navigationController = navigationController else { return }
+        let router = GistDetailRouter(navigationController: navigationController, gist: gist)
+        detailRouter = router
+        router.startFlow()
     }
 }
 
