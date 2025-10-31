@@ -7,12 +7,15 @@
 
 import Foundation
 import CoreNetwork
+import Core
 import UIKit
 
 public final class ProductionFavoritesRepository: FavoritesRepository {
-    private let favoritesManager = FavoritesManager()
-
-    public init() {}
+    private let favoritesManager: FavoritesManager
+    
+    public init(storage: Storable = UserDefaults.standard) {
+        self.favoritesManager = FavoritesManager(storage: storage)
+    }
 
     public func fetchFavorites<T: FavoriteItem>() -> [T] {
         favoritesManager.fetchFavorite()

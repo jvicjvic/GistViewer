@@ -6,20 +6,26 @@
 //
 
 import Foundation
+import Core
 
 class FavoritesManager {
     private let favoritesKey = "FavoriteGists"
+    private let storage: Storable
+    
+    init(storage: Storable = UserDefaults.standard) {
+        self.storage = storage
+    }
 
     func saveFavorite<T: FavoriteItem>(_ item: T) {
         var favorites: [T] = fetchFavorite()
         favorites.append(item)
         if let encoded = try? JSONEncoder().encode(favorites) {
-            UserDefaults.standard.set(encoded, forKey: favoritesKey)
+            storage.set(encoded, forKey: favoritesKey)
         }
     }
 
     func fetchFavorite<T: FavoriteItem>() -> [T] {
-        if let savedData = UserDefaults.standard.data(forKey: favoritesKey),
+        if let savedData = storage.data(forKey: favoritesKey),
            let savedItems = try? JSONDecoder().decode([T].self, from: savedData) {
             return savedItems
         }
@@ -30,7 +36,7 @@ class FavoritesManager {
         var favorites: [T] = fetchFavorite()
         favorites.removeAll { $0.id == item.id }
         if let encoded = try? JSONEncoder().encode(favorites) {
-            UserDefaults.standard.set(encoded, forKey: favoritesKey)
+            storage.set(encoded, forKey: favoritesKey)
         }
     }
 
