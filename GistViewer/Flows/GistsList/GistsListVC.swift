@@ -6,7 +6,7 @@
 //
 
 import Combine
-import NetworkService
+import CoreNetwork
 import UIKit
 
 class GistsListVC: UITableViewController {

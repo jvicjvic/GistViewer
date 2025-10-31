@@ -1,7 +1,7 @@
-@testable import NetworkService
+@testable import CoreNetwork
 import XCTest
 
-final class NetworkServiceTests: XCTestCase {
+final class CoreNetworkTests: XCTestCase {
     func testExample() throws {
         // XCTest Documentation
         // https://developer.apple.com/documentation/xctest

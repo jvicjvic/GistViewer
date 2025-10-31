@@ -7,7 +7,7 @@
 
 import CoreCommons
 import Foundation
-import NetworkService
+import CoreNetwork
 import OSLog
 import UIKit
 

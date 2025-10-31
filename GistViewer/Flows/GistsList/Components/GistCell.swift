@@ -6,7 +6,7 @@
 //
 
 import CoreCommons
-import NetworkService
+import CoreNetwork
 import SnapKit
 import UIKit
 

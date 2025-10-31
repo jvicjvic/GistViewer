@@ -6,7 +6,7 @@
 //
 
 import Combine
-import NetworkService
+import CoreNetwork
 import UIKit
 
 open class FavoritesListVC<T: FavoriteItem>: UITableViewController {

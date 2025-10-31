@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import NetworkService
+import CoreNetwork
 
 /// Service for GitHub Gists API
 final class GistsService: Service<GistsService.Endpoints> {

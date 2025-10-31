@@ -14,7 +14,7 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(path: "../NetworkService"),
+        .package(path: "../CoreNetwork"),
         .package(path: "../CoreCommons"),
         .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.0.1"))
     ],
@@ -23,11 +23,11 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "FavoriteGists",
-            dependencies: ["NetworkService", "SnapKit", "CoreCommons"]
+            dependencies: ["CoreNetwork", "SnapKit", "CoreCommons"]
         ),
         .testTarget(
             name: "FavoriteGistsTests",
-            dependencies: ["NetworkService", "SnapKit", "CoreCommons"]
+            dependencies: ["CoreNetwork", "SnapKit", "CoreCommons"]
         )
     ]
 )

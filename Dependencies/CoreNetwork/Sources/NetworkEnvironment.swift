@@ -1,6 +1,6 @@
 //
 //  NetworkEnvironment.swift
-//  NetworkService
+//  CoreNetwork
 //
 //  Created by jvic on 30/10/25.
 //

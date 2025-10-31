@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import NetworkService
+import CoreNetwork
 import UIKit
 
 @MainActor

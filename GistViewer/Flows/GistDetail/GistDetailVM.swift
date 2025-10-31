@@ -8,7 +8,7 @@
 import CoreCommons
 import FavoriteGists
 import Foundation
-import NetworkService
+import CoreNetwork
 import os
 import UIKit
 
