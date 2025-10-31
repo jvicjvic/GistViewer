@@ -8,7 +8,7 @@
 import FavoriteGists
 import Foundation
 
-struct Gist: Codable, Identifiable, FavoriteItem {
+struct Gist: Codable, Identifiable, FavoriteItem, Equatable {
     let id: String
     let description: String?
     let owner: GistOwner
@@ -35,7 +35,7 @@ struct Gist: Codable, Identifiable, FavoriteItem {
     }
 }
 
-struct GistOwner: Codable {
+struct GistOwner: Codable, Equatable {
     let login: String
     let avatarUrl: String
 
@@ -45,7 +45,7 @@ struct GistOwner: Codable {
     }
 }
 
-struct GistFile: Codable {
+struct GistFile: Codable, Equatable {
     let filename: String
     let content: String?
     let url: String?
