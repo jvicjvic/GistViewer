@@ -85,10 +85,6 @@ class GistDetailVC: UIViewController {
         viewModel.connect()
     }
 
-    @objc func didTapFavorite() {
-        viewModel.didTapFavorite()
-    }
-
     func remakeConstraints() {
         mainContainer.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide).inset(CGFloat.spacing16)
@@ -110,6 +106,10 @@ class GistDetailVC: UIViewController {
 // MARK: - Bindings
 
 extension GistDetailVC {
+    @objc func didTapFavorite() {
+        viewModel.didTapFavorite()
+    }
+    
     func setupBindings() {
         // cabecalho
         viewModel.$gist

@@ -23,6 +23,7 @@ final class GistsListVM: CoreViewModel {
     private var currentPage = 1
     private let repository: GistRepository
     private weak var router: GistListRouter?
+    private var fetchTask: Task<Void, Never>?
 
     init(router: GistListRouter, repository: GistRepository = ProductionGistRepository()) {
         self.router = router
@@ -30,15 +31,16 @@ final class GistsListVM: CoreViewModel {
     }
 
     func connect() {
-        performFetchGists()
+        fetchTask?.cancel()
+        fetchTask = Task {
+            await performFetchGists()
+        }
     }
 
-    private func performFetchGists() {
-        Task {
-            isLoading = true
-            await fetchGists()
-            isLoading = false
-        }
+    private func performFetchGists() async {
+        isLoading = true
+        await fetchGists()
+        isLoading = false
     }
 
     private func fetchGists() async {
@@ -65,11 +67,18 @@ final class GistsListVM: CoreViewModel {
     func didReachEnd() {
         // carrega mais
         currentPage += 1
-        performFetchGists()
+        fetchTask?.cancel()
+        fetchTask = Task {
+            await performFetchGists()
+        }
     }
 
     func didSelect(index: Int) {
         let gist = gists[index]
         router?.navigateTo(.gistDetail(gist))
+    }
+
+    deinit {
+        fetchTask?.cancel()
     }
 }

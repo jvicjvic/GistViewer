@@ -94,8 +94,8 @@ extension GistsListVC {
         cell.titleLabel.text = "\(gist.owner.login) / \(gist.filename)"
 
         cell.setPlaceholder()
-        Task { @MainActor in
-            cell.avatarImageView.image = await viewModel.loadAvatar(gist: gist)
+        cell.loadAvatar { [weak viewModel] in
+            await viewModel?.loadAvatar(gist: gist)
         }
         return cell
     }

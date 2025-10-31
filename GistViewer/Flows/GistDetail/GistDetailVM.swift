@@ -24,6 +24,7 @@ final class GistDetailVM: CoreViewModel {
 
     private let favoritesRepository: FavoritesRepository
     private let repository: GistRepository
+    private var fetchTask: Task<Void, Never>?
 
     var title: String {
         gist.filename
@@ -41,15 +42,16 @@ final class GistDetailVM: CoreViewModel {
     }
 
     func connect() {
-        performFetchGist()
+        fetchTask?.cancel()
+        fetchTask = Task {
+            await performFetchGist()
+        }
     }
 
-    private func performFetchGist() {
-        Task {
-            isLoading = true
-            await fetchGist()
-            isLoading = false
-        }
+    private func performFetchGist() async {
+        isLoading = true
+        await fetchGist()
+        isLoading = false
     }
 
     private func fetchGist() async {
@@ -77,5 +79,9 @@ final class GistDetailVM: CoreViewModel {
         newStatus.toggle()
         favoritesRepository.setFavorite(item: gist, isFavorite: newStatus)
         isFavorite = newStatus
+    }
+
+    deinit {
+        fetchTask?.cancel()
     }
 }

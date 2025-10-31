@@ -11,6 +11,8 @@ import SnapKit
 import UIKit
 
 class GistCell: UITableViewCell {
+    private var avatarTask: Task<Void, Never>?
+    
     lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -71,5 +73,19 @@ class GistCell: UITableViewCell {
 
     func setPlaceholder() {
         avatarImageView.image = GistCell.placeholderImage
+    }
+    
+    func loadAvatar(from task: @escaping () async -> UIImage?) {
+        avatarTask?.cancel()
+        avatarTask = Task { @MainActor in
+            avatarImageView.image = await task()
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        avatarTask?.cancel()
+        avatarTask = nil
+        setPlaceholder()
     }
 }
