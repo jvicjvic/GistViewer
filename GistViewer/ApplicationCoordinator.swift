@@ -5,11 +5,10 @@
 //  Created by jvic on 30/08/24.
 //
 
-import Core
 import Foundation
 import UIKit
 
-class ApplicationCoordinator: CoreCoordinator {
+class ApplicationCoordinator {
     let window: UIWindow
     private var mainTabRouter: MainTabRouter?
 
