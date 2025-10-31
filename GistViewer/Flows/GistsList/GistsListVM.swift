@@ -5,6 +5,7 @@
 //  Created by jvic on 28/08/24.
 //
 
+import Core
 import CoreCommons
 import Foundation
 import CoreNetwork
@@ -12,7 +13,7 @@ import OSLog
 import UIKit
 
 @MainActor
-final class GistsListVM {
+final class GistsListVM: CoreViewModel {
     @Published private(set) var gists: [Gist] = []
     @Published private(set) var isLoading = false
     @Published var errorMessage: String?

@@ -5,12 +5,13 @@
 //  Created by jvic on 29/08/24.
 //
 
+import Core
 import Foundation
 import CoreNetwork
 import UIKit
 
 @MainActor
-open class FavoritesListVM<T: FavoriteItem> {
+open class FavoritesListVM<T: FavoriteItem>: CoreViewModel {
     @Published private(set) var items: [T] = []
     @Published private(set) var isLoading = false
     @Published var errorMessage = ""
@@ -30,7 +31,7 @@ open class FavoritesListVM<T: FavoriteItem> {
         self.onItemSelected = handler
     }
 
-    func connect() {
+    public func connect() {
         fetchItems()
     }
 

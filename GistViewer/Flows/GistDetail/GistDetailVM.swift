@@ -5,6 +5,7 @@
 //  Created by jvic on 29/08/24.
 //
 
+import Core
 import CoreCommons
 import FavoriteGists
 import Foundation
@@ -13,7 +14,7 @@ import os
 import UIKit
 
 @MainActor
-final class GistDetailVM {
+final class GistDetailVM: CoreViewModel {
     @Published private(set) var gist: Gist
     @Published private(set) var fileContent: String?
     @Published var errorMessage: String?
