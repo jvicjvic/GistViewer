@@ -2,7 +2,7 @@
 
 * O projeto está organizado em módulos. A app depende dos módulos Core, CoreCommons, CoreNetwork e FavoriteGists.
 * O módulo de Core define algumas abstrações básicas que os fluxos devem seguir, com alguns utilitários em CoreCommons
-* Cada fluxo está implementado dentro da pasta `Flows`
+* Cada fluxo está implementado dentro da pasta `Flows`, cada tela possui um ViewModel e um ViewController
 * A navegação é gerenciada por routers.
 * Para persistência dos Favoritos utilizei o `UserDefaults` por questão de praticidade, sendo abstraído através de um protocolo `Storable`.
 * O acesso aos dados é feito através de objetos *Repository*, e para cada repository há um protocolo definido (ex.: `GistRepository` e `ProductionGistRepository`). Isso permite que seja simples de mockar ou substituir a camada de acesso a dados.
