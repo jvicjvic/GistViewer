@@ -8,7 +8,8 @@
 * O acesso aos dados é feito através de objetos *Repository*, e para cada repository há um protocolo definido (ex.: `GistRepository` e `ProductionGistRepository`). Isso permite que seja simples de mockar ou substituir a camada de acesso a dados.
 * A funcionalidade de Favoritos trabalha com uma abstração `FavoriteItem`, de modo que seria possível utilizar ela com qualquer objeto que implemente o protocolo. Aqui eu fiz o objeto `Gist` implementar o protocolo. Considerei criar um outro tipo especificamente para os favoritos, mas resolvi fazer o mais simples.
 * Ao chegar no final da lista, novos gists são carregados automaticamente
-* Alguns tests unitários foram adicionados, utilizando XCTest
+* Alguns tests unitários foram adicionados, utilizando `XCTest`
+* Erros são logados com OSLog
 
 
 ## Dependências
