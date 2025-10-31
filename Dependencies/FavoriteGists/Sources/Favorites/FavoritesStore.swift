@@ -1,5 +1,5 @@
 //
-//  FavoritesManager.swift
+//  FavoritesStore.swift
 //  GistsApp
 //
 //  Created by jvic on 29/08/24.
@@ -8,7 +8,7 @@
 import Foundation
 import Core
 
-class FavoritesManager {
+class FavoritesStore {
     private let favoritesKey = "FavoriteGists"
     private let storage: Storable
     
